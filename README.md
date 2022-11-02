@@ -1,6 +1,6 @@
 # Examples from Acumatica ERP Help and Training Courses
 
-This repository contains examples that are included in the Acumatica ERP developer guides and training courses in Version 2022 R1.
+This repository contains examples that are included in the Acumatica ERP developer guides and training courses in Version 2022 R2.
 
 Customization
 
@@ -19,8 +19,12 @@ Integration development
   * [I300](IntegrationDevelopment/I300): Examples from the [I300 Data Retrieval with OData](https://openuni.acumatica.com/courses/integration/i300-web-services-odata/) training course
   * [I310](IntegrationDevelopment/I310): Examples from the [I310 Data Retrieval with REST API](https://openuni.acumatica.com/courses/integration/i310-web-services-basic-data-retrieval/) training course
   * [I320](IntegrationDevelopment/I320): Examples from the [I320 Advanced Data Retrieval with REST API](https://openuni.acumatica.com/courses/integration/i320-web-services-advanced-data-retrieval/) training course
-  * [I330](IntegrationDevelopment/I330): Examples from the [I330 Data Manipulation with REST API](https://openuni.acumatica.com/courses/integration/i330-web-services-data-manipulation/) training course
+  * [I330](IntegrationDevelopment/I330): Examples from the [I330 Data Manipulation with REST API](https://openuni.acumatica.com/courses/integration/i330-web-services-data-manipulation/) training course 
 
 Plug-in development  
 
  * [Help](PlugInDevelopment/Help): Examples from the [Plug-In Development Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=03156779-6d2b-4723-b2f5-49baf251f7e3)
+
+Barcode-driven engine
+
+ * [Help](BarcodeDrivenEngine/Help): Examples from the [Barcode-Driven Engine Guide](https://help.acumatica.com/Help?ScreenId=ShowWiki&pageid=422a7a11-bd6e-4eba-ba34-f70612ad1b1f)

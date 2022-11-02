@@ -1,23 +1,17 @@
 using System;
 using PX.Data;
 using PhoneRepairShop.Workflows;
-using PX.TM;
 using PX.Data.BQL.Fluent;
+using PX.TM;
 using PX.Data.BQL;
-using System.Linq;
 
 namespace PhoneRepairShop
 {
     public class RSSVAssignProcess : PXGraph<RSSVAssignProcess>
     {
-        /*public PXCancel<RSSVWorkOrder> Cancel;
-        public PXProcessing<RSSVWorkOrder,
-            Where<RSSVWorkOrder.status.IsEqual<
-            RSSVWorkOrderWorkflow.States.readyForAssignment>>> WorkOrders;*/
-
+        public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
         public PXFilter<RSSVWorkOrderToAssignFilter> Filter;
-        public PXFilteredProcessing<RSSVWorkOrder,
-            RSSVWorkOrderToAssignFilter,
+        public SelectFrom<RSSVWorkOrder>.
             Where<RSSVWorkOrder.status.IsEqual<
                 RSSVWorkOrderWorkflow.States.readyForAssignment>.
                 And<RSSVWorkOrder.timeWithoutAction.IsGreaterEqual<
@@ -30,10 +24,12 @@ namespace PhoneRepairShop
                 And<RSSVWorkOrder.serviceID.IsEqual<
                     RSSVWorkOrderToAssignFilter.serviceID.FromCurrent>.
                     Or<RSSVWorkOrderToAssignFilter.serviceID.FromCurrent.
-                        IsNull>>>>,
-            OrderBy<Desc<RSSVWorkOrder.timeWithoutAction,
-                RSSVWorkOrder.priority.Desc>>> WorkOrders;
-        public PXCancel<RSSVWorkOrderToAssignFilter> Cancel;
+                        IsNull>>>>.
+           OrderBy<RSSVWorkOrder.timeWithoutAction.Desc,
+               RSSVWorkOrder.priority.Desc>.
+           ProcessingView.
+           FilteredBy<RSSVWorkOrderToAssignFilter> WorkOrders;
+
 
         public RSSVAssignProcess()
         {
@@ -42,19 +38,7 @@ namespace PhoneRepairShop
             PXUIFieldAttribute.SetEnabled<RSSVWorkOrder.assignTo>(
                 WorkOrders.Cache, null, true);
         }
-        public override bool IsDirty
-        {
-            get
-            {
-                return false;
-            }
-        }
 
-        /*protected virtual void _(Events.RowSelected<RSSVWorkOrder> e)
-        {
-            WorkOrders.SetProcessWorkflowAction<RSSVWorkOrderEntry>(
-                g => g.Assign);
-        }*/
         protected virtual void _(Events.RowSelected<
             RSSVWorkOrderToAssignFilter> e)
         {
@@ -101,6 +85,14 @@ namespace PhoneRepairShop
             else
             {
                 e.ReturnValue = 0;
+            }
+        }
+
+        public override bool IsDirty
+        {
+            get
+            {
+                return false;
             }
         }
 
