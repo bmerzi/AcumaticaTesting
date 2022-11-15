@@ -1,8 +1,0 @@
-update screen SO301000 {
-  update container "OrderSummary" {
-    … 
-    add recordAction "PrintSalesOrder" {
-      redirect = True
-    } 
-  }
-}

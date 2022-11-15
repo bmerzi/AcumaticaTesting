@@ -1,6 +1,0 @@
-update sitemap {
-  ...
-  add item "AP303000" {
-    displayName = "Vendors"
-  }
-}
